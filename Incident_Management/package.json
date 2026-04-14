@@ -1,0 +1,59 @@
+{
+  "name": "Incident_Management",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "express": "^4",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-test": "^0.4.1",
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9",
+    "axios": "^1.13.6",
+    "cds-plugin-ui5": "^0.13.0",
+    "jest": "^30.3.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "test": "npx jest Test/test.js",
+    "watch-incident": "cds watch --open incident/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-incidents": "cds watch --open ns.incidents/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/incidents"
+  ],
+  "cds": {
+    "requires": {
+      "[development]": {
+        "auth": {
+          "kind": "mocked",
+          "users": {
+            "fahath": {
+              "roles": [
+                "support"
+              ]
+            }
+          }
+        }
+      },
+      "[production]": {
+        "db": "hana",
+        "auth": "xsuaa"
+      },
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true,
+      "Geocoding": {
+        "kind": "rest",
+        "model": "srv/external/geocoding_api"
+      }
+    }
+  }
+}

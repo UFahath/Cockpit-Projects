@@ -1,0 +1,9 @@
+# GET http://localhost:4004/odata/v4/my-books/Books
+
+# POST http://localhost:4004/odata/v4/my-books/Books(1)/applyDiscountToAll
+
+# Content-Type:application/json
+
+# {
+#     "percentage":10
+# }

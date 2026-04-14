@@ -1,0 +1,7 @@
+vehicleId,modelName,vehicleStatus,oldPrice,newPrice,dealer_ID,state_ID
+TN1001,X5,Available,5000000,5200000,D001,S023
+TN1002,Swift,Available,700000,750000,D001,S023
+MH1001,Creta,Available,1500000,1600000,D002,S014
+MH1002,Baleno,Available,800000,850000,D002,S014
+KA1001,City,Available,1200000,1250000,D002,S011
+KL1001,Verna,Available,1300000,1350000,D001,S012

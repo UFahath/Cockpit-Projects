@@ -1,0 +1,4 @@
+ID,name,email,status,passport_ID,department_ID,laptop_ID
+E001,John Doe,john@company.com,Active,P001,D001,L001
+E002,Jane Smith,jane@company.com,Inactive,P002,D001,L002
+E003,Mark Lee,mark@company.com,Active,P003,D002,L003

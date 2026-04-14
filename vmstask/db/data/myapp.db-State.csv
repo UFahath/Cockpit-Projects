@@ -1,0 +1,37 @@
+stateCode,stateName,taxPercentage
+AP,Andhra Pradesh,11
+AR,Arunachal Pradesh,9
+AS,Assam,12
+BR,Bihar,10
+CT,Chhattisgarh,13
+GA,Goa,8
+GJ,Gujarat,11
+HR,Haryana,12
+HP,Himachal Pradesh,9
+JH,Jharkhand,10
+KA,Karnataka,12
+KL,Kerala,11
+MP,Madhya Pradesh,13
+MH,Maharashtra,12
+MN,Manipur,9
+ML,Meghalaya,10
+MZ,Mizoram,8
+NL,Nagaland,9
+OR,Odisha,11
+PB,Punjab,10
+RJ,Rajasthan,12
+SK,Sikkim,8
+TN,Tamil Nadu,11
+TG,Telangana,12
+TR,Tripura,9
+UP,Uttar Pradesh,13
+UT,Uttarakhand,10
+WB,West Bengal,11
+AN,Andaman and Nicobar Islands,8
+CH,Chandigarh,9
+DN,Dadra and Nagar Haveli and Daman and Diu,10
+DL,Delhi,12
+JK,Jammu and Kashmir,11
+LA,Ladakh,8
+LD,Lakshadweep,7
+PY,Puducherry,9

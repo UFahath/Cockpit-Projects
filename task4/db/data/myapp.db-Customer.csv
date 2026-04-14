@@ -1,0 +1,3 @@
+customerId,firstName,lastName,email,phoneNumber
+C001,John,Doe,john@example.com,9999000011
+C002,Alice,Smith,alice@example.com,9999000022

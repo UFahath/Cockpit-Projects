@@ -1,0 +1,5 @@
+id,vehicle_vehicleId,dealer_dealerId,message,createdAt
+N001,TN1001,D001,"Vehicle approved for delivery",2026-03-01T10:00:00
+N002,KL2002,D002,"Vehicle pending approval",2026-03-02T11:30:00
+N003,KA3003,D003,"Vehicle ready for delivery",2026-03-03T12:45:00
+N004,MH4004,D001,"Pending inspection",2026-03-04T13:50:00

@@ -1,0 +1,16 @@
+ID,title,author_ID,price,stock,category_name,published
+b1001,SAP CAP Guide,a1b2c3d4-0001,550,12,Science,2024-01-10
+b1002,Learning Node.js,a1b2c3d4-0002,450,8,Science,2023-07-15
+b1003,World War II Chronicles,a1b2c3d4-0003,650,5,History,2022-05-20
+b1004,Modern Fiction Tales,a1b2c3d4-0004,300,20,Fiction,2024-03-01
+b1005,Advanced SAP HANA,a1b2c3d4-0001,900,3,Science,2025-01-12
+b1006,Data Structures Deep Dive,a1b2c3d4-0002,700,6,Science,2023-11-11
+b1007,Ancient Civilizations,a1b2c3d4-0003,400,0,History,2021-09-09
+b1008,AI Revolution,a1b2c3d4-0004,800,10,Science,2024-06-18
+b1009,Travel Through Time,a1b2c3d4-0005,350,4,History,2022-12-12
+b1010,Fictional Realms,a1b2c3d4-0004,250,15,Fiction,2023-04-14
+b1011,SAP Performance Tuning,a1b2c3d4-0001,1000,2,Science,2025-02-01
+b1012,Science of Space,a1b2c3d4-0002,600,7,Science,2024-09-09
+b1013,Medieval Europe,a1b2c3d4-0003,500,9,History,2023-08-08
+b1014,Creative Writing Basics,a1b2c3d4-0005,200,25,Fiction,2024-10-10
+b1015,Quantum Computing 101,a1b2c3d4-0004,1200,1,Science,2025-01-20

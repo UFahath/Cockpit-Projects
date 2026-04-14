@@ -1,0 +1,29 @@
+ID,name,stateCode,tax
+S001,Andhra Pradesh,AP,18
+S002,Arunachal Pradesh,AR,18
+S003,Assam,AS,18
+S004,Bihar,BR,18
+S005,Chhattisgarh,CG,18
+S006,Goa,GA,18
+S007,Gujarat,GU,18
+S008,Haryana,HR,18
+S009,Himachal Pradesh,HP,18
+S010,Jharkhand,JH,18
+S011,Karnataka,KA,18
+S012,Kerala,KL,18
+S013,Madhya Pradesh,MP,18
+S014,Maharashtra,MH,18
+S015,Manipur,MN,18
+S016,Meghalaya,ML,18
+S017,Mizoram,MZ,18
+S018,Nagaland,NL,18
+S019,Odisha,OD,18
+S020,Punjab,PB,18
+S021,Rajasthan,RJ,18
+S022,Sikkim,SK,18
+S023,Tamil Nadu,TN,18
+S024,Telangana,TS,18
+S025,Tripura,TR,18
+S026,Uttar Pradesh,UP,18
+S027,Uttarakhand,UT,18
+S028,West Bengal,WB,18

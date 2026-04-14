@@ -1,0 +1,6 @@
+ID,vendor,amount,currency,status,isUrgent,createdBy
+1111-aaaa,ABC Supplies,25000,INR,NEW,false,admin
+2222-bbbb,XYZ Corp,75000,INR,PENDING_APPROVAL,true,manager1
+3333-cccc,Global Tech,150000,USD,APPROVED,false,manager2
+4444-dddd,OfficeMart,5000,INR,NEW,false,user1
+5555-eeee,FastLogix,120000,USD,REJECTED,true,manager

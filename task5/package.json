@@ -1,0 +1,40 @@
+{
+  "name": "task5",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2.7.0",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9",
+    "@sap/hana-client": "^2.27.24",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "db": {
+              "kind": "hana"
+            },
+      "API_MANAGE_WORKFORCE_TIMESHEET": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_MANAGE_WORKFORCE_TIMESHEET",
+        "[Sandbox]": {
+          "credentials": {
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_MANAGE_WORKFORCE_TIMESHEET",
+            "headers": {
+              "APIKey": "EuhAk8t5Z2imfpERMcEIDXw7hm0NafuI"
+            }
+          }
+        }
+      }
+    }
+  }
+}

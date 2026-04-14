@@ -1,0 +1,5 @@
+dealerId,dealerName,location,dealerApprovalStatus
+D001,Tesla Dealer,Tamil Nadu,APPROVED
+D002,Ford Dealer,Kerala,APPROVED
+D003,BMW Dealer,Karnataka,APPROVED
+D004,Audi Dealer,Maharashtra,APPROVED

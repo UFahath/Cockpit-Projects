@@ -1,0 +1,28 @@
+{
+  "name": "u2",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/http-client": "^4.5.1",
+    "@sap-cloud-sdk/resilience": "^4.5.1",
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "SAP.Translation.Hub": {
+        "kind": "rest",
+        "model": "srv/external/translationhub",
+        "credentials": {
+          "destination": "translationapi"
+        }
+      }
+    }
+  }
+}

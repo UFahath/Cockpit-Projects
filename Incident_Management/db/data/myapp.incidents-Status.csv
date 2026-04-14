@@ -1,0 +1,7 @@
+code,name,descr,criticality
+N,New,Newly created incident,3
+A,Assigned,Assigned to agent,2
+I,In Process,Work in progress,2
+H,On Hold,Temporarily paused,1
+R,Resolved,Issue resolved,3
+C,Closed,Incident closed,0

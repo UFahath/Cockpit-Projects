@@ -1,0 +1,196 @@
+
+# GET Requests
+###########################
+
+### Customers
+GET http://localhost:4004/odata/v4/vehicle-management/Customers
+
+### Dealers
+GET http://localhost:4004/odata/v4/vehicle-management/Dealers
+
+### States
+GET http://localhost:4004/odata/v4/vehicle-management/States
+
+### Vehicles
+GET http://localhost:4004/odata/v4/vehicle-management/Vehicles
+
+### Orders
+GET http://localhost:4004/odata/v4/vehicle-management/Orders
+
+### Configurations
+GET http://localhost:4004/odata/v4/vehicle-management/Configurations
+
+### Logs
+GET http://localhost:4004/odata/v4/vehicle-management/Logs
+
+### Read Customer with Orders
+GET http://localhost:4004/odata/v4/vehicle-management/Customers('C001')?$expand=orders
+
+### Read Dealer with Vehicles
+GET http://localhost:4004/odata/v4/vehicle-management/Dealers('D001')?$expand=vehicles
+
+### Read Vehicle
+GET http://localhost:4004/odata/v4/vehicle-management/Vehicles('TN1001')?$expand=dealer,state,orders
+
+### Read Order with Expand
+GET http://localhost:4004/odata/v4/vehicle-management/Orders('O003')?$expand=customer,vehicleRef,configuration
+
+### Read Configuration
+GET http://localhost:4004/odata/v4/vehicle-management/Configurations('CFG001')?$expand=order
+
+### Read Logs
+GET http://localhost:4004/odata/v4/vehicle-management/Logs
+
+###########################
+
+GET http://localhost:4004/odata/v4/vehicle-management/Vehicles('MH1003')?$expand=*
+
+##################
+
+# POST Requests
+###########################
+
+### Create Customer
+POST http://localhost:4004/odata/v4/vehicle-management/Customers
+Content-Type: application/json
+
+{
+  "customerId":"C003",
+  "firstName":"Abdul",
+  "lastName":"Fahath",
+  "email":"dummy@example.com",
+  "phoneNumber":"9999000033"
+}
+
+### Create Dealer
+POST http://localhost:4004/odata/v4/vehicle-management/Dealers
+Content-Type: application/json
+
+{
+  "dealerId":"D003",
+  "dealerName":"Nallur Motors",
+  "location":"Karnataka",
+  "status":"ACTIVE"
+}
+
+### Create Vehicle
+POST http://localhost:4004/odata/v4/vehicle-management/Vehicles
+Content-Type: application/json
+
+{
+  "modelName":"Hyoodai",
+  "vehicleStatus":"Available",
+  "newPrice":1200000,
+  "dealer_ID":"D002",
+  "state_ID":"S014"
+}
+
+### Create MTS Order
+POST http://localhost:4004/odata/v4/vehicle-management/Orders
+Content-Type: application/json
+
+{
+  "orderId":"O003",
+  "orderType":"MTS",
+  "customer_customerId":"C002",
+  "vehicleRef_vehicleId":"KA1003"
+}
+
+### Create Configuration
+POST http://localhost:4004/odata/v4/vehicle-management/Configurations
+Content-Type: application/json
+
+{
+  "configId":"CFG002",
+  "modelName":"Honda",
+  "color":"White",
+  "engineType":"Diesel",
+  "order_orderId":"O003"
+}
+
+### Create Log Entry
+POST http://localhost:4004/odata/v4/vehicle-management/Logs
+Content-Type: application/json
+
+{
+  "userId":"dealer",
+  "action":"READ",
+  "entityName":"",
+  "timestamp":""
+}
+
+###########################
+# PATCH Requests
+###########################
+
+### Update Customer
+PATCH http://localhost:4004/odata/v4/vehicle-management/Customers('C001')
+Content-Type: application/json
+
+{
+  "phoneNumber":"9842114259"
+}
+
+### Update Dealer
+PATCH http://localhost:4004/odata/v4/vehicle-management/Dealers('D001')
+Content-Type: application/json
+
+{
+  "status":"INACTIVE"
+}
+
+### Update Vehicle Status
+PATCH http://localhost:4004/odata/v4/vehicle-management/Vehicles('TN1001')
+Content-Type: application/json
+
+{
+  "vehicleStatus":"RESERVED"
+}
+
+#########################
+### Update Vehicle Status
+PATCH http://localhost:4004/odata/v4/vehicle-management/Vehicles('TN1001')
+Content-Type:application/json
+
+{
+  "newPrice":900000
+}
+
+####################
+
+### Update Order Status
+PATCH http://localhost:4004/odata/v4/vehicle-management/Orders('O004')
+Content-Type: application/json
+
+{
+  "orderStatus":"Inprocess"
+}
+
+### Update Configuration
+PATCH http://localhost:4004/odata/v4/vehicle-management/Configurations('CFG001')
+Content-Type: application/json
+
+{
+  "color":"White"
+}
+
+###########################
+# DELETE Requests
+###########################
+
+### Delete Customer
+DELETE http://localhost:4004/odata/v4/vehicle-management/Customers('C001')
+
+### Delete Vehicle
+DELETE http://localhost:4004/odata/v4/vehicle-management/Vehicles('KA1001')
+
+### Delete Customer with Orders 
+DELETE http://localhost:4004/odata/v4/vehicle-management/Customers('C001')
+#######
+GET http://localhost:4004/odata/v4/vehicle-management/Orders('O001')
+
+
+
+
+
+# // "model":"https://46aa3ce2trial-dev-task6-srv.cfapps.us10-001.hana.ondemand.com/odata/v4/my/$metadata",

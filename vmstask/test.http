@@ -1,0 +1,9 @@
+POST /Vehicles
+Content-Type: application/json
+Authorization: Basic Y3VzdG9tZXIx
+{
+    "modelName": "BMW My Dummy Model",
+    "currentPrice": 5000000,
+    "stateName": "Karnataka",
+    "dealer_dealerId": "D003"
+}

@@ -1,0 +1,6 @@
+vehicleId,modelName,currentPrice,oldPrice,vehicleStatus,state_stateCode,vehicleNumber,dealer_dealerId,approvedBy_adminId
+TN1001,Tesla Model X,120000,110000,Approved,TN,TN01AB1234,D001,A101
+KL2002,Ford Mustang,55000,52000,Pending,KL,Not Yet Approved,D002,
+KA3003,BMW X5,75000,72000,Approved,KA,KA05EF9012,D003,A102
+MH4004,Tesla,68000,65000,Pending,MH,Not Yet Approved,D001,
+DL5005,Chevrolet Camaro,50000,47000,Pending,DL,Not Yet Approved,D002,

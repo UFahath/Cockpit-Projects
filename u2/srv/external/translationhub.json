@@ -1,0 +1,728 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "SAP Translation Hub",
+        "description": "To provide users of software in a global market with texts in their own language, translations are required. SAP Translation Hub enables you to draw on SAP's translation experience across multiple products and languages to propose translations for short texts.",
+        "version": "1810",
+        "contact": {
+            "name": "SAP Translation Hub team",
+            "email": "translationhub@sap.com"
+        }
+    },
+    "x-sap-shortText": "Translate UI texts and get suggestions for UI texts during development.",
+    "host": "sandbox.api.sap.com",
+    "schemes": [
+        "https"
+    ],
+    "securityDefinitions": {
+        "BasicAuthentication": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "BasicAuthentication": []
+        }
+    ],
+    "basePath": "/sth",
+    "consumes": [
+        "application/json; charset=utf-8"
+    ],
+    "produces": [
+        "application/json; charset=utf-8"
+    ],
+    "externalDocs": {
+        "description": "User Guide",
+        "url": "https://help.sap.com/docs/translation-hub/sap-translation-hub/what-is-sap-translation-hub"
+    },
+    "x-servers": [
+        {
+            "url": "https://saptranslation-{subaccountname}.hanatrial.ondemand.com/translationhub/api/v1",
+            "description": "Translation API for Trial Account on SAP Business Technology Platform",
+            "templates": {
+                "subaccountname": {
+                    "description": "The name of the subaccount on SAP Business Technology Platform."
+                }
+            }
+        },
+        {
+            "url": "https://sap{providersubaccountname}-{subscriptionsubaccountname}.{regionhost}/translationhub/api/v1",
+            "description": "Translation API for SAP Business Technology Platform",
+            "templates": {
+                "providersubaccountname": {
+                    "description": "The name of the provider subaccount name on SAP Business Technology Platform."
+                },
+                "subscriptionsubaccountname": {
+                    "description": "The name of the subscription subaccount on SAP Business Technology Platform."
+                },
+                "regionhost": {
+                    "enum": [
+                        "hana.ondemand.com",
+                        "ap1.hana.ondemand.com",
+                        "eu1.hana.ondemand.com",
+                        "eu3.hana.ondemand.com",
+                        "us1.hana.ondemand.com",
+                        "us2.hana.ondemand.com",
+                        "us3.hana.ondemand.com"
+                    ],
+                    "default": "hana.ondemand.com",
+                    "description": "The SAP Business Technology Platform region where the application is deployed."
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/domains": {
+            "get": {
+                "summary": "SAP product domains",
+                "description": "SAP product terminology is organized by domains. Domains are used in the translation process to determine the correct terminology for a given application. <br> This method returns a list of the domains and domain groups that are available in SAP Translation Hub.<br> You can combine the '/domains' method with the '/translate' method to more accurately reflect the subject area of your texts.",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "default": "application/json; charset=utf-8",
+                        "in": "header",
+                        "description": "Specifies the nature of the data in the body so that the receiving agent can process the data accordingly.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Shows whether a particular domain is available in SAP Translation Hub. Enter all or part of the short description of the domain, for example, ```financial```.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "onlyGroups",
+                        "in": "query",
+                        "description": "Shows a list of the domain groups that SAP Translation Hub supports. To list the domain groups, enter ```true``` as the value for this parameter. You can use the ID of a domain or a domain group to specify a particular subject area in the '/translate' method.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Domains"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of SAP product domains.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "domains": {
+                                    "$ref": "#/definitions/Domains"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/languages": {
+            "get": {
+                "summary": "Languages that SAP Translation Hub supports.",
+                "description": "Returns a list of the languages that SAP Translation Hub supports. You can also check whether a particualr language is available in SAP Translation Hub.",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "default": "application/json; charset=utf-8",
+                        "in": "header",
+                        "description": "Specifies the nature of the data in the body so that the receiving agent can process the data accordingly.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Determines whether a particular language is available in SAP Translation Hub. You must enter the name, as opposed to the ID, of the language, for example,  ```Bulgarian```.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Languages"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of supported languages.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "languages": {
+                                    "$ref": "#/definitions/Languages"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/suggestions": {
+            "get": {
+                "summary": "The '/suggestions' method enables you to get suggestions for short texts during the development process.",
+                "description": "Provides suggestions for short texts based on complete or partial texts and their translations. You can, for example, use the '/suggestions' method to propose texts while you type texts in a development environment. The texts that the method proposes are already available in additional languages in the multilingual text repository (MLTR).",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "default": "application/json; charset=utf-8",
+                        "in": "header",
+                        "description": "Specifies the nature of the data in the body so that the receiving agent can process the data accordingly.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Allows you to search for a text in SAP Translation Hub in English. You can enter a complete text or part of a text. If you want to search for a text in a language other than English, enter the text in the required language here and specify the language in the *searchLanguage* parameter.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchLanguage",
+                        "in": "query",
+                        "description": "Allows you to search for a text in any of the languages that SAP Translation Hub supports. Specify the language using the language ID, for example, de.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "description": "Allows you to search for a text that has translations in the specified language(s). For example, you can search for texts that have translations in German (de) and French (fr).",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "domain",
+                        "in": "query",
+                        "description": "Searches for texts in the specified domain(s) or domain group(s). For example, you can search for terms that are assigned to the domain for Customer Relationship Management (B2) or logistics (03). To see which domains and domain groups are supported, use the '/domains' method.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "texttype",
+                        "in": "query",
+                        "description": "Allows you to search for a text that is assigned to one or more text types. For example, you can search for terms that are assigned to the text type for field labels (XFLD). To see which text types are supported, use the '/texttypes' method. If you use the suggestion service with ABAP systems, you can specify a four-character object type, such as DTEL for data elements, in this parameter.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "maxLength",
+                        "in": "query",
+                        "description": "Searches for texts up to the specified number of characters. For example, if a UI element can accommodate only 5 characters, you can search for texts that comprise 5 characters or fewer. If the suggestion service cannot find any texts that match the length criteria, the response is empty.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Suggestions"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The response contains a text that matches your search criteria.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "suggestions": {
+                                    "$ref": "#/definitions/Suggestions"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/texttypes": {
+            "get": {
+                "summary": "Returns a list of the text types available in SAP Translation Hub.",
+                "description": "In SAP products, short texts, such as those used on user interfaces (UIs), are characterized by various text types. The type of a specific text is determined by the UI element that it describes. For example,  message texts are described by the text type ```XMSG```. <br> The '/texttypes' method returns a list of the text types that are available in SAP Translation Hub. You can combine the '/texttypes' method with the '/suggestions' method to narrow down the results of the '/suggestions' method.",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "default": "application/json; charset=utf-8",
+                        "in": "header",
+                        "description": "Specifies the nature of the data in the body so that the receiving agent can process the data accordingly.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Allows you to search for a specific text type, such as 'message'.",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "tags": [
+                    "Text Types"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "An array of available text types.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "texttypes": {
+                                    "$ref": "#/definitions/texttypes"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/translate": {
+            "post": {
+                "summary": "The '/translate' method enables you to get translations of English short texts that exist in SAP Translation Hub.",
+                "description": "Provides translations of short texts based on a combination of existing texts and their translations that are used in SAP products and machine translation capabilities.",
+                "parameters": [
+                    {
+                        "name": "Content-Type",
+                        "default": "application/json; charset=utf-8",
+                        "in": "header",
+                        "description": "Specifies the nature of the data in the body so that the receiving agent can process the data accordingly.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "translate",
+                        "in": "body",
+                        "description": "The JSON request contains an array of ```units``` JSON objects. ",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Translate"
+                        }
+                    }
+                ],
+                "tags": [
+                    "Translate"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The response contains the translated values.",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "units": {
+                                    "$ref": "#/definitions/TranslateResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request.  The langauge mentioned in the source language field or the target language field or both is wrong",
+                        "schema": {
+                            "$ref": "#/definitions/languageCodeError"
+                        }
+                    },
+                    "500": {
+                        "description": "Bad request.  The targetLanguages field is not passed or is empty.",
+                        "schema": {
+                            "$ref": "#/definitions/targetLanguageError"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Domains": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/DomainsResponse"
+            }
+        },
+        "DomainsResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "FI",
+                    "description": "The ID of a domain or a domain group, depending on whether you use the 'onlyGroups' parameter in the request."
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Financial Accounting",
+                    "description": "The short description of a domain or a domain group, depending on whether you use the 'onlyGroups' parameter in the request."
+                }
+            }
+        },
+        "Suggestions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/SuggestionsResponse"
+            }
+        },
+        "SuggestionsResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "0",
+                    "description": "Uniquely identifies the text's entry in the database."
+                },
+                "value": {
+                    "type": "string",
+                    "example": "Cancel",
+                    "description": "The text for which the '/suggestions' method searches in the MLTR based on the text that you enter in the search parameter in the request. For example, let's assume you want to search for 'cancel'. You enter part of that word, for example, 'canc', in the request. The value parameter in the response contains the full text, **cancel**."
+                },
+                "domainId": {
+                    "type": "string",
+                    "example": "BC",
+                    "description": "The ID of the domain assigned to the translations of the text entered in the request. If you specify the ID of a domain group in the request, the response always contains the ID of an individual domain."
+                },
+                "domainName": {
+                    "type": "string",
+                    "example": "Basis",
+                    "description": "The name of the domain assigned to the translations of the text entered in the request. If you specify the ID of a domain group in the request, the response always contains the name of an individual domain."
+                },
+                "texttypeId": {
+                    "type": "string",
+                    "example": "XFLD",
+                    "description": "The ID of the text type assigned to the text entered in the request. If you use the suggestion service with ABAP systems and the service returns an object type instead of a text type, this parameter shows the four-character ID of the object type."
+                },
+                "texttypeName": {
+                    "type": "string",
+                    "example": "Label",
+                    "description": "The name of the text type assigned to the text entered in the request. If you use the suggestion service with ABAP systems and the service returns an object type instead of a text type, this parameter shows the name of the object type."
+                },
+                "englishValue": {
+                    "type": "string",
+                    "example": "Cancel",
+                    "description": "If you search for a text in English, the content of this parameter is the same as the value parameter. If you search for a text in a language *other* than English, this parameter contains the English translation of the text in the value parameter. The English translation of the text - in English - entered in the request."
+                },
+                "availableLanguages": {
+                    "type": "string",
+                    "example": "39",
+                    "description": "The total number of languages, including English, in which there are translations of the requested text in SAP Translation Hub."
+                },
+                "availableFilteredLanguages": {
+                    "example": "1",
+                    "type": "string",
+                    "description": "If you use the language parameter in the request, this parameter shows the number of languages in that parameter in which translations of the text was found. For example, if you specify French (FR) and German (DE) in the language parameter of the request, but there are translations of the requested text only in French, the value of this key is 1. If there are translations in both French and German, the value of this key is 2."
+                },
+                "textSpace": {
+                    "type": "object",
+                    "$ref": "#/definitions/textSpace",
+                    "description": "Indicates length specifications of the text entered in the request. This parameter is supported only for texts that you search for  in English or German. This means the searchLanguage parameter is English or German, or you do not enter the searchLanguage parameter in the request."
+                }
+            }
+        },
+        "textSpace": {
+            "type": "object",
+            "properties": {
+                "inputChars": {
+                    "type": "string",
+                    "example": 6,
+                    "description": "The number of characters contained in the text entered in the request."
+                },
+                "minRecEm": {
+                    "type": "string",
+                    "example": 11,
+                    "description": "The minimum recommended length to set aside in the UI to accommodate a potential length increase in translations. It is measured in em.      "
+                },
+                "minRecChars": {
+                    "type": "string",
+                    "example": 16,
+                    "description": "The minimum recommended number of characters to set aside in the UI to accommodate a potential length increase in translations."
+                }
+            }
+        },
+        "Translate": {
+            "type": "object",
+            "properties": {
+                "targetLanguages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The codes of the target languages in which you want the method to return translations of texts. To view the IDs of the supported languages, call the SAP Translation Hub '/languages' method. If you do not specify any target languages, the method returns the texts in all available target languages.",
+                    "default": [
+                        "es",
+                        "fr"
+                    ],
+                    "example": [
+                        "es"
+                    ]
+                },
+                "sourceLanguage": {
+                    "type": "string",
+                    "description": "Enables you to specify a source language other than English. You can enter the code of any of the languages that SAP Translation Hub supports as a source language. If you do not use this parameter, the API assumes that the source language is English. To see which combinations of source and target languages are supported, see [Supported Languages](https://help.sap.com/docs/translation-hub/sap-translation-hub/supported-languages).",
+                    "default": "en",
+                    "example": "en"
+                },
+                "enableMT": {
+                    "type": "boolean",
+                    "description": "Determines whether SAP Translation Hub translates texts using SAP Machine Translation (SAP MT) in addition to the multilingual text  repository (MLTR). By default, SAP MT is active. If you want to deactivate it, enter ```false``` as the value of this key.",
+                    "default": true,
+                    "example": true
+                },
+                "statsOnly" : {
+                    "type": "boolean",
+                    "description": "If this option is set to ```true``` then the language, translationProvider and the qualityIndex will be shown in the translations but not the value. By default, the value of this key is ```false```.",
+                    "default": false,
+                    "example": false
+                },
+                "minQuality" : {
+                    "type": "integer",
+                    "description": "This parameter filters the results such that only the translations whose qulityIndex is greater than or equal to the value mentioned here is displayed. By default, the value of this key is ```0```.",
+                    "default": "0",
+                    "example": "70"
+                },
+                "domain": {
+                    "type": "string",
+                    "default": "BC",
+                    "example": "BC",
+                    "description": "The ID of a translation domain, for example, BC. If you do not specify a domain, the method searches for translations in all available domains."
+                },
+                "companyMLTRId": {
+                    "type": "string",
+                    "description": "The ID of a company MLTR. To get the ID of a company MLTR, see the address bar of the UI for company MLTRs. For more information, see [Access UIs for Integrating Your Own Language Data](https://help.sap.com/docs/translation-hub/sap-translation-hub/access-uis-for-integrating-your-own-language-data). "
+                },
+                "units": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/units"
+                    }
+                }
+            }
+        },
+        "units": {
+            "type": "object",
+            "properties": {
+                "textType": {
+                    "type": "string",
+                    "default": "XFLD",
+                    "example": "XFLD",
+                    "description": "The ID of a text type, for example, XFLD for a field label."
+                },
+                "key": {
+                    "type": "string",
+                    "default": "LOGIN_USERNAME_FIELD",
+                    "example": "LOGIN_USERNAME_FIELD",
+                    "description": "A key that helps you to uniquely identify a particular text and its  subsequent translations in the units key. SAP Translation Hub stores  this key with the text in the service request to make it easier to  identify specific texts and their translations than by using the texts  alone. For example, if you specify a key for each text in a properties  file that you want to translate, you can use the key to identify the  translations for each text in the target properties files.<br>The key  is stored only to make it easier to identify the text in the units key;  it is not stored for future reference in the multilingual text repository."
+                },
+                "value": {
+                    "type": "string",
+                    "default": "User Name",
+                    "example": "User Name",
+                    "description": "The text to be translated."
+                },
+                "maxLength": {
+                    "type": "integer",
+                    "example": "10",
+                    "description": "The maximum number of characters that you want translations to comprise. Note: If the API is not able to find translations of the required length for at least one target language, the request does not contain any translations."
+                },
+                "searchData": {
+                    "type": "object",
+                    "$ref": "#/definitions/searchData",
+                    "description": "A parameter that allows you to specify the translation of a UI text  in one of the target languages. You use this parameter if you know  that there are multiple possible translations for a given source text, and you want to restrict the results to a specific translation.  For example, take the word 'Cancel'. The German translation could be  'Abbrechen' or 'Stornieren'. If you know that the German translation in a given instance should be 'Abbrechen', you can specify 'Abbrechen'  so that the correct translation in German (and in other languages)  is returned."
+                }
+            },
+            "required": [
+                "value"
+            ]
+        },
+        "searchData": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "string",
+                    "default": "es",
+                    "example": "es",
+                    "description": "The ID of the language in which you want to provide a translation."
+                },
+                "value": {
+                    "type": "string",
+                    "default": "Usuario",
+                    "example": "Usuario",
+                    "description": "The text in a particular target language, as specified in the  ```language``` key of the ```searchData``` key."
+                }
+            },
+            "required": [
+                "language",
+                "value"
+            ]
+        },
+        "unitsTranslateResponse": {
+            "type": "object",
+            "properties": {
+                "textType": {
+                    "type": "string",
+                    "example": "XFLD",
+                    "description": "The ID of a text type, for example, XFLD for a field label."
+                },
+                "domain": {
+                    "type": "string",
+                    "example": "BC",
+                    "description": "The ID of a translation domain, for example, BC. If you do not specify a domain, the method searches for translations in all available domains."
+                },
+                "key": {
+                    "type": "string",
+                    "example": "LOGIN_USERNAME_FIELD",
+                    "description": "A key that uniquely identifies a text in the ```units``` key."
+                },
+                "value": {
+                    "type": "string",
+                    "example": "User Name",
+                    "description": "Text to be translated."
+                },
+                "translations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/translationsTranslateResponse"
+                    },
+                    "description": "Shows the translated text."
+                }
+            }
+        },
+        "translationsTranslateResponse": {
+            "type": "object",
+            "properties": {
+                "language": {
+                    "type": "string",
+                    "example": "es",
+                    "description": "The code of the target language in which the text is translated."
+                },
+                "value": {
+                    "type": "string",
+                    "example": "Usuario",
+                    "description": "The translation of the text."
+                },
+                "translationProvider": {
+                    "type": "string",
+                    "example": "0",
+                    "description": "The source of translated texts; 0 represents the multilingual text repository (MLTR), 1 represents SAP machine translation, and 5 represents a company MLTR."
+                },
+                "qualityIndex": {
+                    "type": "string",
+                    "example": "98",
+                    "description": "The quality index helps you to judge the quality of translations. The higher the number on a scale from 0-100, the better the quality.   <br>For more information, see [Quality Index](https://help.sap.com/docs/translation-hub/sap-translation-hub/quality-index).."
+                }
+            }
+        },
+        "TranslateResponse": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/unitsTranslateResponse"
+            }
+        },
+        "Languages": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/LanguagesResponse"
+            }
+        },
+        "LanguagesResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "bg",
+                    "description": "The ID of a language."
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Bulgarian",
+                    "description": "The name of the language, for example, ''Bulgarian''.'"
+                },
+                "bcp-47-code": {
+                    "type": "string",
+                    "example": "bg",
+                    "description": "The ISO code of the language, compliant with Best Current Practice (BCP) 47."
+                }
+            }
+        },
+        "texttypes": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/texttypesResponse"
+            }
+        },
+        "texttypesResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "XMSG",
+                    "description": "The unique identifier of a text type, such as <i>XMSG</i> for message texts."
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Message text",
+                    "description": "The short description of a text type, such as <i>Message text</i>."
+                }
+            }
+        },
+        "languageCodeError": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "Unknown language: cr",
+                    "description": "The error message displayed when the language code given in the source language field or the target language field or both is wrong."
+                    
+                }
+            }
+        },
+        "targetLanguageError": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": "99"
+                },
+                  "message": {
+                      "type": "string",
+                      "example": "Error when calling translation service. Check the log for more details"
+                  }
+            }
+        },
+         "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                },
+                "fields": {
+                    "type": "string"
+                }
+            }
+        }
+        
+    }
+}
