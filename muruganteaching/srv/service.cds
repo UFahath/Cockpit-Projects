@@ -1,6 +1,11 @@
 // using {myapp.db.Student as s ,myapp.db.Course as c} from '../db/schema';
-using {myapp.db.Order,myapp.db.OrderItem} from '../db/schema'
+using {myapp.db as db} from '../db/schema';
+@impl:'./service.js'
 service MyService{
-    entity student as projection on s;
-    entity course as projection on c;
+   // entity Users as projection on User;
+   // entity Profiles as projection on db.Profile;
+   entity Products as projection on db.Product;
+   entity Orders as projection on db.Order;
 }
+
+
