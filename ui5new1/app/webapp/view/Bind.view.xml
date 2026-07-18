@@ -1,0 +1,22 @@
+<mvc:View xmlns:mvc='sap.ui.core.mvc' xmlns='sap.m' controllerName='ui5new1.controller.Bind'>
+
+ <!-- <HBox>
+   <Text text="{/name/dumy}"/>
+   <Input placeholder="Enter the Name" value="{/name/dumy}" valueLiveUpdate="true" width="600px" />
+</HBox> -->
+
+
+<!--Context Binding-->
+<VBox >
+<Text text='{i18n>empDetailHeading}'/>
+<!-- <Text text="Name:{/name}"/>
+<Text text="City:{/city}"/>
+<Input value="{/name}" placeholder="change Name" valueLiveUpdate="true"/> -->
+<Button text='change Murugan' press='.changeMurugan'/>
+</VBox>
+
+<VBox>
+</VBox>
+
+
+</mvc:View>

@@ -1,7 +1,15 @@
 const cds = require('@sap/cds');
-const { SELECT } = require('@sap/cds/lib/ql/cds-ql');
+const { SELECT, orderBy } = require('@sap/cds/lib/ql/cds-ql');
 
 module.exports = cds.service.impl(async function(){
+    const {Orders} = this.entities;
+    // 2025-10-09
+    // 2025-07-06
+  this.on('READ',Orders,async(req)=>{
+    let data = await SELECT.from(Orders).where({orderDate:{or:['2025-10-09','2025-07-06']}})
+    console.log(data);
+    return data;
+  })
 
   // const { Orders } = srv.entities;
  this.on('READ','*',async function(req,next){
@@ -49,6 +57,7 @@ module.exports = cds.service.impl(async function(){
 
   //   return result;
   // });
+
 
 });
 

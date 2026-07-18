@@ -1,0 +1,11 @@
+ID,name,email,salary,department_ID
+e1,John,john@company.com,45000,1001
+e2,Sara,sara@company.com,75000,1001
+e3,Samuel,samuel@company.com,90000,1003
+e4,Steve,steve@company.com,55000,1002
+e5,Ravi,ravi@company.com,30000,1004
+e6,Anita,anita@company.com,120000,1003
+e7,Neha,neha@company.com,65000,1002
+e8,Suresh,suresh@company.com,80000,1001
+e9,Kiran,kiran@company.com,50000,1004
+e10,Arjun,arjun@company.com,95000,1003

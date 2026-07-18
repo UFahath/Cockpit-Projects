@@ -1,0 +1,10 @@
+POST http://localhost:4004/odata/v4/my/Employees
+Content-Type:application/json
+
+{
+    "name":"George",
+    "laptop_ID": "L002"
+}
+
+####
+GET  http://localhost:4004/odata/v4/my/Employees

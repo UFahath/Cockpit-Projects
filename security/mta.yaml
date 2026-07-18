@@ -25,6 +25,35 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: security-auth
+      - name: security-db
+
+  - name: security-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: security-db
+  - name: security
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: security-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
 
 resources:
   - name: security-auth
@@ -40,6 +69,8 @@ resources:
           credential-types:
             - "binding-secret"
             - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
         role-collections:
           - name: 'RiskViewer (security ${org}-${space})'
             description: 'generated'
@@ -49,3 +80,10 @@ resources:
             description: 'generated'
             role-template-references:
               - '$XSAPPNAME.RiskManager'
+    requires:
+      - name: app-api
+  - name: security-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

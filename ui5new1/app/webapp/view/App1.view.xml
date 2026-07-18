@@ -1,0 +1,9 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName='ui5new1.controller.App'>
+  <HBox>
+   <Input id="nameInput" placeholder="Enter Your Name" width="500px" liveChange="getLiveUpdate"/>
+   <Button text="Click" press=".onShowHello" class="sapUiSmallMarginBegin"/>
+  </HBox>
+
+  <Text id="myText"/>
+
+</mvc:View>

@@ -1,0 +1,6 @@
+<mvc:View xmlns:mvc='sap.ui.core.mvc' xmlns='sap.m' controllerName='ui5new1.controller.App'>
+
+<Text id='click' text='hello World'/>
+<Button text='Click' press='.onShowHello'/>
+
+</mvc:View>

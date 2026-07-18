@@ -25,6 +25,7 @@ entity Customers : managed {
       firstName    : String;
       lastName     : String;
       name         : String = trim(firstName || ' ' || lastName);
+      virtual  fullName :String;
       email        : EmailAddress;
       phone        : PhoneNumber;
       incidents    : Association to many Incidents

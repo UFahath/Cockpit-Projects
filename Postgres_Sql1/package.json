@@ -1,0 +1,29 @@
+{
+  "name": "Postgres_Sql1",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/postgres": "^2",
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "server": {
+        "index": true
+      },
+      "db": {
+        "kind": "postgres"
+      },
+      "auth": {
+        "kind": "mocked"
+      }
+    }
+  }
+}

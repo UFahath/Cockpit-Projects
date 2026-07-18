@@ -1,0 +1,53 @@
+{
+    "_version": "2.8.0",
+    "sap.app": {
+        "id": "ui5new1",
+        "type": "application",
+        "title": "{{appTitle}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "i18n": {
+            "bundleName": "ui5new1.i18n.i18n",
+            "supportedLocales": [
+                "en",
+                "ta"
+            ],
+            "fallbackLocale": "en"
+        }
+    },
+    "sap.ui":{
+      "technology":"UI5",
+      "deviceTypes":{
+        "desktop":true,
+        "phone":true,
+        "tablet":true
+      }
+    },
+    "sap.ui5": {
+        "dependencies":{
+            "minUI5Version":1.148,
+            "libs":{
+                "sap.ui.core":{},
+                "sap.m":{}
+            }
+        },
+        "rootView":{
+            "viewName":"ui5new1.view.EmpManager",
+            "type":"XML"
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "ui5new1.i18n.i18n",
+                    "supportedLocales": [
+                        "en",
+                        "ta"
+                    ],
+                    "fallbackLocale": "en"
+                }
+            }
+        }
+    }
+}

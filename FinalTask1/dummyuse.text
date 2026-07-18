@@ -1,0 +1,33 @@
+ 
+ //--------------------------------------------From GoodsReceipt---------------------------------------------
+ 
+ // const target = { product_ID: productID, warehouse_ID: warehouseID }
+      // const stockLevel = await tx.run(SELECT.one.from(StockLevels).where(target));
+
+      // if (stockLevel) {
+      //    await tx.run(UPDATE(StockLevels).set({ currentStock: stockLevel.currentStock + qty }).where(target));
+      // } else {
+      //    const existingBins = await tx.run(SELECT.from(StockLevels).columns('binLocation').where({ warehouse_ID: warehouseID }))
+      //    const binLocation = generateBinLocation(existingBins);
+      //    const newStockLevel = {
+      //       ID: cds.utils.uuid(),
+      //       binLocation,
+      //       product_ID: productID,
+      //       warehouse_ID: warehouseID,
+      //       currentStock: qty,
+      //       reservedStock: 0
+      //    }
+      //    await tx.run(INSERT.into(StockLevels).entries(newStockLevel));
+      // }
+
+      //  const stockMovement = await SELECT.one.from(StockMovements).where({ ID: newStockMovementId });
+      //  srv.send('CREATE','StockMovements',req.data);
+   })
+
+   //  await this.send('CREATE', StockLevels, {
+   //      ProductId,
+   //      CurrentStock: newStock
+   //    })
+
+   //------------------------------------------------------------------
+

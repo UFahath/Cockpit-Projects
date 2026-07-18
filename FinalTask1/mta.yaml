@@ -1,0 +1,202 @@
+_schema-version: 3.3.0
+ID: FinalTask
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+  deploy_mode: html5-repo
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npm ci
+        - npx cds build --production
+modules:
+  - name: FinalTask-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      instances: 1
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: FinalTask-auth
+      - name: FinalTask-db
+      - name: FinalTask-destination
+
+  - name: FinalTask-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: FinalTask-db
+  - name: FinalTask
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: FinalTask-auth
+      - name: FinalTask-html5-runtime
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
+
+  - name: FinalTask-app-deployer
+    type: com.sap.application.content
+    path: gen
+    build-parameters:
+      build-result: app/
+      requires:
+        - name: FinalTaskstockmovement
+          artifacts:
+            - stockmovement.zip
+          target-path: app/
+        - name: FinalTaskstockoverview
+          artifacts:
+            - stockoverview.zip
+          target-path: app/
+    requires:
+      - name: FinalTask-auth
+      - name: srv-api
+      - name: FinalTask-html5-repo-host
+        parameters:
+          content-target: true
+          config:
+            HTML5Runtime_enabled: true
+    parameters:
+      config:
+        destinations:
+          - Name: srv-api
+            URL: ~{srv-api/srv-url}
+            Authentication: NoAuthentication
+            Type: HTTP
+            ProxyType: Internet
+            HTML5.ForwardAuthToken: true
+            HTML5.DynamicDestination: true
+
+  - name: FinalTaskstockmovement
+    type: html5
+    path: app/stockmovement
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms:
+        []
+  - name: FinalTaskstockoverview
+    type: html5
+    path: app/stockoverview
+    build-parameters:
+      build-result: dist
+      builder: custom
+      commands:
+        - npm ci
+        - npm run build
+      supported-platforms:
+        []
+
+  - name: FinalTask-destinations
+    type: com.sap.application.content
+    requires:
+      - name: FinalTask-auth
+        parameters:
+          service-key:
+            name: FinalTask-auth-key
+      - name: FinalTask-html5-repo-host
+        parameters:
+          service-key:
+            name: FinalTask-html5-repo-host-key
+      - name: srv-api
+      - name: FinalTask-destination
+        parameters:
+          content-target: true
+    build-parameters:
+      no-source: true
+    parameters:
+      content:
+        instance:
+          existing_destinations_policy: update
+          destinations:
+            - Name: FinalTask-html5-repository
+              ServiceInstanceName: FinalTask-html5-repo-host
+              ServiceKeyName: FinalTask-html5-repo-host-key
+              sap.cloud.service: FinalTask.service
+            - Name: FinalTask-auth
+              Authentication: OAuth2UserTokenExchange
+              ServiceInstanceName: FinalTask-auth
+              ServiceKeyName: FinalTask-auth-key
+              sap.cloud.service: FinalTask.service
+
+resources:
+  - name: FinalTask-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: FinalTask-${org}-${space}
+        tenant-mode: dedicated
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
+        role-collections:
+          - name: 'Operator (FinalTask ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.Operator'
+          - name: 'Manager (FinalTask ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.Manager'
+          - name: 'Admin (FinalTask ${org}-${space})'
+            description: 'generated'
+            role-template-references:
+              - '$XSAPPNAME.Admin'
+    requires:
+      - name: app-api
+  - name: FinalTask-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: FinalTask-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+    requires:
+      - name: srv-api
+
+  - name: FinalTask-html5-repo-host
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+  - name: FinalTask-html5-runtime
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime

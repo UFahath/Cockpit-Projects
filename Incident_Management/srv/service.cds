@@ -5,12 +5,12 @@ service SupportService {
    entity Incident as projection on db.Incidents actions{
          action resolveIncident(ID:UUID)
    }
-   @readonly
+
    entity Customers as projection on db.Customers;
 }
 
 annotate SupportService.Incident with @odata.draft.enabled;
-annotate SupportService with @(requires:'support');
+// annotate SupportService with @(requires:'support');
 
 //Admin
 service AdminService{
@@ -19,7 +19,7 @@ service AdminService{
 }
 
 
-annotate AdminService with @(requires:'admin');
+// annotate AdminService with @(requires:'admin');
 
 
 

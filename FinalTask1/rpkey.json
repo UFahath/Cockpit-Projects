@@ -1,0 +1,31 @@
+Getting key FinalTask-html5-repo-host-key for service instance FinalTask-html5-repo-host as abdulrahumanfahath.u@laderatechnology.com...
+
+{
+  "credentials": {
+    "app_host_id": "d6e4ff87-c050-443e-bd2d-70bbf94e5ad9",
+    "content_endpoint": "https://html5-apps-repo-dt.cfapps.us10.hana.ondemand.com",
+    "saasregistryenabled": true,
+    "sap.cloud.service": "html5-apps-repo-dt",
+    "uaa": {
+      "apiurl": "https://api.authentication.us10.hana.ondemand.com",
+      "clientid": "sb-d6e4ff87-c050-443e-bd2d-70bbf94e5ad9!b634740|html5-apps-repo-uaa!b424",
+      "clientsecret": "f9a778cd-bd3f-47ca-b5b8-a9a459376512$DKoFVFKAs3hRi5Nj-Pqj3otXTRqHnEKGufv3TptuhRk=",
+      "credential-type": "binding-secret",
+      "identityzone": "f23cbb9btrial",
+      "identityzoneid": "daf16d9a-e5f6-4f89-8b46-6d25b3efb4fe",
+      "sburl": "https://internal-xsuaa.authentication.us10.hana.ondemand.com",
+      "serviceInstanceId": "d6e4ff87-c050-443e-bd2d-70bbf94e5ad9",
+      "subaccountid": "daf16d9a-e5f6-4f89-8b46-6d25b3efb4fe",
+      "tenantid": "daf16d9a-e5f6-4f89-8b46-6d25b3efb4fe",
+      "tenantmode": "dedicated",
+      "uaadomain": "authentication.us10.hana.ondemand.com",
+      "url": "https://f23cbb9btrial.authentication.us10.hana.ondemand.com",
+      "verificationkey": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuDt7P1JtWkqVFjdRMsEk\nfkY6OyiMsbtM6FtOTMIBSwfpmHgfuZsvQbh/GFvhP3+AIVlmguwE9cv0NOxtOVaR\nffc1z5iD+g31sEjFkXNTHo7sjKfZKpY80RjFrVeuaOCsa0CjiUzpkaXmBUPzFuKS\nDukBsWSBLfPZGs9+aS//vJGwRnbo6FX8YWYlTDrdzMcYHSsdbr+yIt0W/n7rFOJf\n9vNtSxpUfWy7OKo7avwI3/J68b5OvAW8K9rvi+eLLQ2BQJ23E8qGrbXywWDRLyBO\n6SbtgfVLCSywveQhbXoTmx0vzxVnJoMDrHzRyCXjOn4YgDvN5DYcjNZm1Tb29S8R\ncwIDAQAB\n-----END PUBLIC KEY-----",
+      "xsappname": "d6e4ff87-c050-443e-bd2d-70bbf94e5ad9!b634740|html5-apps-repo-uaa!b424",
+      "zoneid": "daf16d9a-e5f6-4f89-8b46-6d25b3efb4fe"
+    },
+    "uri": "https://html5-apps-repo-dt.cfapps.us10.hana.ondemand.com",
+    "vendor": "SAP"
+  }
+}
+

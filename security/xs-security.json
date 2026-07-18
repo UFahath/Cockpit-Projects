@@ -1,5 +1,5 @@
 {
-  "xsappname": "myapp",
+  "xsappname": "na-0ab269fb-5e10-402b-aa69-7b0dbae33dce",
   "tenant-mode": "dedicated",
   "scopes": [
     {
@@ -29,5 +29,12 @@
       ],
       "attribute-references": []
     }
-  ]
+  ],
+  "oauth2-configuration": {
+    "redirect-uris": [
+      "https://*.applicationstudio.cloud.sap/**",
+      "https://f23cbb9btrial-dev-security.cfapps.us10.hana.ondemand.com/**",
+      "http://localhost:5000/**"
+    ]
+  }
 }

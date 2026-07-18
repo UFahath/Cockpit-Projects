@@ -1,0 +1,4 @@
+ID,name,email,ApproveStatus
+1,Arun Kumar,arun.kumar@example.com,Pending
+2,Priya Sharma,priya.sharma@example.com,Approved
+3,Rahul Verma,rahul.verma@example.com,Rejected

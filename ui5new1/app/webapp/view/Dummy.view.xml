@@ -1,0 +1,4 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" controllerName="ui5new1.controller.App">
+<Input value="{/firstSection/name}" description="{/firstSection/name}" valueLiveUpdate="true" width="500px"></Input>
+<Button text='Click' press='.onShowHello' id="myBtn"/>
+</mvc:View>

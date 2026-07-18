@@ -1,0 +1,77 @@
+##Inventory SErvice
+
+##1)Get Available Stock function
+GET http://localhost:4004/inventoryservice/getAvailableStock
+Content-Type: application/json
+
+{
+        "productID":"p1f1c1c1-0001-0001-0001-000000000001",
+        "warehouseID":"w1f1c1c1-0001-0001-0001-000000000001"
+}
+
+#####
+
+###2)Function:getLowStock(threshold)
+GET http://localhost:4004/inventoryservice/getLowStockByThreshold
+Content-Type: application/json
+
+{
+   "threshold":20
+}
+####
+
+###3)Function:autoLowStockDetect()
+GET http://localhost:4004/inventoryservice/autoLowStockDetect
+#####
+
+
+####
+###Movement Service
+### goodsReceipt(productID, warehouseID, qty)
+POST http://localhost:4004/movementservice/goodsReceipt
+Content-Type: application/json
+
+{
+      "productID":"p1f1c1c1-0001-0001-0001-000000000001",
+      "warehouseID":"w1f1c1c1-0001-0001-0001-000000000001",
+      "qty":2
+}
+
+################
+
+# ####goodsIssue(
+#         productID   : UUID,
+#         warehouseID : UUID,
+#         qty         : Integer
+#     )
+
+POST http://localhost:4004/movementservice/goodsIssue
+Content-Type: application/json
+
+{
+        "productID"   : "p1f1c1c1-0001-0001-0001-000000000001",
+        "warehouseID" : "w1f1c1c1-0001-0001-0001-000000000001",
+        "qty"         : 7
+}
+
+
+#########
+
+######Transfer
+#   action stockTransfer(
+#         productID        : UUID,
+#         fromWarehouseID   : UUID,
+#         toWarehouseID     : UUID,
+#         qty               : Integer
+#     ) returns StockMovements;
+
+POST http://localhost:4004/movementservice/stockTransfer
+Content-Type: application/json
+
+{
+        "productID"        : "p1f1c1c1-0001-0001-0001-000000000001",
+        "fromWarehouseID"   : "w1f1c1c1-0001-0001-0001-000000000001",
+        "toWarehouseID"     : "w1f1c1c1-0002-0002-0002-000000000002",
+        "qty"               : 9
+}
+

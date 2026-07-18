@@ -1,0 +1,111 @@
+    1  cds w --profile hybrid
+    2  cds w
+    3  cds r --run .
+    4  clear
+    5  cds r --run .
+    6  cds init
+    7  npm i
+    8  clear
+    9  touch app/schema.cds
+   10  clear
+   11  touch db/schema.cds && basctl --open ./db/schema.cds
+   12  cds add data
+   13  cds w
+   14  cds ql -run
+   15  cds ql
+   16  cds repl
+   17  cds ql --run
+   18  cds ql
+   19  cds repl --run
+   20  clear
+   21  cds repl --run
+   22  cds.repl --run
+   23  cds repl
+   24  cds repl TypeTest
+   25  cds repl
+   26  clear
+   27  cds repl -q
+   28  cds repl -r
+   29  clear
+   30  cds w
+   31  cds r --run
+   32  cds r -run
+   33  cds r --run .
+   34  npm i
+   35  cds w
+   36  vim app/zentraui/webapp/i18n/i18n.properties
+   37  npm run watch-zentracoreapp
+   38  cds w
+   39  cd zentracore
+   40  cds w
+   41  curl "http://localhost:4004/orders/Orders?$top=2&$skip=0"
+   42  cds w
+   43  rm -rf node_modules
+   44  rm -rf package-lock.json
+   45  rm -rf .npm
+   46  npm cache clean --force
+   47  npm install --legacy-peer-deps --no-optional
+   48  npm install @sap/cds
+   49  rm -rf node_modules package-lock.json .npm
+   50  npm cache clean --force
+   51  npm install @sap/cds
+   52  rm -rf node_modules package-lock.json .npm
+   53  npm cache clean --force
+   54  npm install @sap/cds
+   55  rm -rf node_modules package-lock.json .npm
+   56  npm cache clean --force
+   57  cat package.json
+   58  npm install @sap/cds
+   59  npm uninstall @ui5/cli
+   60  rm -rf node_modules
+   61  rm -rf package-lock.json
+   62  rm -rf .npm
+   63  npm cache clean --force
+   64  df -h
+   65  rm -rf node_modules
+   66  rm -rf package-lock.json
+   67  rm -rf .npm
+   68  rm -rf dist
+   69  rm -rf gen
+   70  npm cache clean --force
+   71  npm cache verify
+   72  rm -rf node_modules package-lock.json
+   73  npm install --legacy-peer-deps
+   74  npm install --force
+   75  node -v
+   76  npm -v
+   77  nvm install 18
+   78  nvm use 18
+   79  npm install 18
+   80  node -v
+   81  npm use 18
+   82  nvm use 18
+   83  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+   84  source ~/.bashrc
+   85  source ~/.profile
+   86  cds watch --profile hybrid
+   87  cds build --for hana
+   88  cds deploy --to hana
+   89  cds watch --profile hybrid
+   90  cf update-service wms-app-auth -c xs-security.json
+   91  cds bind --exec -- npm start --prefix app/router
+   92  clear
+   93  cds w --profile hybrid
+   94  pwd
+   95  clear
+   96  npm install @sap/approuter --prefix app/router
+   97  cds w --profile hybrid
+   98  cds add xsuaa
+   99  cds add approuter
+  100  npm i
+  101  cds bind -2 wms-app-auth:wms-app-auth_key
+  102  cds bind --exec env | grep VCAP-SERIVICE >> app/router/default-env.json
+  103  cds bind --exec env 
+  104  npm install @sap/approuter --prefix app/router
+  105  cds w --profile hybrid
+  106  cds add xsuaa
+  107  cds w --profile hybrid
+  108  cds add approuter
+  109  npm instal
+  110  npm install
+  111  history > ht.txt

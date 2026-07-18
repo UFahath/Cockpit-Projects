@@ -1,0 +1,29 @@
+{
+  "name": "translationhub",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^4.6.0",
+    "@sap-cloud-sdk/resilience": "^4.6.0",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4",
+    "axios": "^1.15.2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "private": true,
+    "cds": {
+      "requires": {
+        "translationhub": {
+          "kind": "rest",
+          "credentials": {
+            "destination": "translationhub"
+          }
+        }
+      }
+    }
+}

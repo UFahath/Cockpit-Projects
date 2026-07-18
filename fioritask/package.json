@@ -1,0 +1,22 @@
+{
+  "name": "fioritask",
+  "version": "1.0.0",
+  "dependencies": {
+    "@sap/cds": "^9"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "cds-plugin-ui5": "^0.13.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-fioritask": "cds watch --open fioritask/index.html?sap-ui-xx-viewCache=false --livereload false"
+  },
+  "private": true,
+  "sapux": [
+    "app/fioritask"
+  ],
+  "workspaces": [
+    "app/*"
+  ]
+}

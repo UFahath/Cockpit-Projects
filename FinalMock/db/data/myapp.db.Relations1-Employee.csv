@@ -1,0 +1,6 @@
+ID,name,salary,laptop_ID,dept_ID
+E001,Arjun Kumar,3000,L001,1
+E002,Meera Nair,5000,L002,2
+E003,Murugan,1000,L002,1
+E004,David,2000,,2
+E005,,4000,L001,1

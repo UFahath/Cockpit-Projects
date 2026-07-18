@@ -7,3 +7,4 @@ entity Order:managed{
    customerName:String(100);
    status:String(20);
 }
+

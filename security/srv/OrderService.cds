@@ -11,6 +11,9 @@ service SalesOrder{
         {
             grant:['*'],
             to:['RiskManager']
+        },
+        {
+            grant:['']
         }
     ]) as projection on db.Order;
 }

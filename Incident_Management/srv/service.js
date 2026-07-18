@@ -1,15 +1,25 @@
 const cds = require('@sap/cds');
+const { SELECT } = require('@sap/cds/lib/ql/cds-ql');
 
 module.exports = cds.service.impl(function () {
 
-  const { Incident } = this.entities;
+  const { Incident,Customers } = this.entities;
+  
 
+  this.on('*',async(req)=>{
+    console.log(req.user)
+  })
   this.before("CREATE", Incident, async (req) => {
     urgencyChangeBasedonData(req.data)
   });
 
   this.before("UPDATE", Incident, async (req) => {
     await update(req)
+  });
+
+  this.on('READ',Customers,async(req)=>{
+       let data = await SELECT.one.from(Customers).where({name:'Daniel Watts'});
+       return data;
   });
 
 //  this.on('resolveIncident', Incident, async (req) => {

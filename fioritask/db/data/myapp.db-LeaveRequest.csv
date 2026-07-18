@@ -1,0 +1,3 @@
+ID,fromDate,toDate,reason,status,employee_ID
+1,2025-01-02,2025-01-03,Sick Leave,Pending,1
+2,2025-01-05,2025-01-07,Vacation,Approved,2

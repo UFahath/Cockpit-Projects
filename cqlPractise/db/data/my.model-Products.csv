@@ -1,0 +1,9 @@
+ID,name,price,category_ID
+p1,Laptop,80000,c1
+p2,Smartphone,50000,c1
+p3,Refrigerator,60000,c2
+p4,Novel,500,c3
+p5,T-Shirt,1200,c4
+p6,Headphones,3000,c1
+p7,Washing Machine,45000,c2
+p8,Keyboard,1500,c1

@@ -1,0 +1,63 @@
+{
+  "name": "dest1",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap-cloud-sdk/connectivity": "^4.7.0",
+    "@sap-cloud-sdk/http-client": "^4.7.0",
+    "@sap-cloud-sdk/resilience": "^4.7.0",
+    "@sap/cds": "^9",
+    "@sap/xssec": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4",
+    "@sap/cds-dk": "^9",
+    "cds-plugin-ui5": "^0.17.0",
+    "rimraf": "^5.0.5",
+    "mbt": "^1.2.49",
+    "@sap/dev-cap-tools": "^1.31.0"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "undeploy": "cf undeploy dest1 --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "Weather_Api": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "weathernew"
+        }
+      },
+      "[production]": {
+        "auth": "mocked"
+      },
+      "API_SALES_ORDER_SRV": {
+        "kind": "odata-v2",
+        "credentials": {
+          "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV",
+          "headers": {
+            "APIKey": "EuhAk8t5Z2imfpERMcEIDXw7hm0NafuI"
+          }
+        }
+      },
+      "alertService2": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "alertService2"
+        }
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/project1",
+    "app/project1"
+  ]
+}

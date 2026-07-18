@@ -1,0 +1,43 @@
+
+{
+  originalProperties: {
+    owner: {
+      SubaccountId: 'daf16d9a-e5f6-4f89-8b46-6d25b3efb4fe',
+      InstanceId: null
+    },
+    destinationConfiguration: {
+      Name: 'alertservice',
+      Type: 'HTTP',
+      Description: '',
+      URL: 'https://clm-sl-ans-live-ans-service-api.cfapps.us10.hana.ondemand.com',
+      ProxyType: 'Internet',
+      Authentication: 'OAuth2ClientCredentials',
+      clientId: 'sb-1a56c8a1-d7b6-426c-b448-a2dd49b395f9!b634740|ans-xsuaa!b673',
+      clientSecret: 'cf28c71b-bcbe-4fe0-a9c3-42b45f64ef75$KqhobUY1hqTpJENdJLPTwjKwPNJTrYa8naxBE2DwZX0=',
+      tokenServiceURL: 'https://f23cbb9btrial.authentication.us10.hana.ondemand.com/oauth/token',
+      tokenServiceURLType: 'Dedicated'
+    },
+    authTokens: [ [Object] ]
+  },
+  authTokens: [
+    {
+      type: 'bearer',
+      value: 'eyJ0eXAiOiJKV1QiLCJqaWQiOiJJZ1c4Y3FaOHJnWVNNbGg1SFhOM2RCUWdoNHQ2SmpuMm9CejlFOU5DcWlnPSIsImFsZyI6IlJTMjU2Iiwiamt1IjoiaHR0cHM6Ly9mMjNjYmI5YnRyaWFsLmF1dGhlbnRpY2F0aW9uLnVzMTAuaGFuYS5vbmRlbWFuZC5jb20vdG9rZW5fa2V5cyIsImtpZCI6ImRlZmF1bHQtand0LWtleS1jOGExYmIyMDU5In0.eyJzdWIiOiJzYi0xYTU2YzhhMS1kN2I2LTQyNmMtYjQ0OC1hMmRkNDliMzk1ZjkhYjYzNDc0MHxhbnMteHN1YWEhYjY3MyIsImlzcyI6Imh0dHBzOi8vZjIzY2JiOWJ0cmlhbC5hdXRoZW50aWNhdGlvbi51czEwLmhhbmEub25kZW1hbmQuY29tL29hdXRoL3Rva2VuIiwiYXV0aG9yaXRpZXMiOlsiYW5zLXhzdWFhIWI2NzMuYW5zLmNwX2NvbmZfcmVhZCIsImFucy14c3VhYSFiNjczLmFucy5jcF9hbGVydF9yZWFkIiwiYW5zLXhzdWFhIWI2NzMuYW5zLmNwX2NvbmZfd3JpdGUiLCJ1YWEucmVzb3VyY2UiLCJhbnMteHN1YWEhYjY3My5hbnMuY3BfYWxlcnRfd3JpdGUiXSwiY2xpZW50X2lkIjoic2ItMWE1NmM4YTEtZDdiNi00MjZjLWI0NDgtYTJkZDQ5YjM5NWY5IWI2MzQ3NDB8YW5zLXhzdWFhIWI2NzMiLCJhdWQiOlsic2ItMWE1NmM4YTEtZDdiNi00MjZjLWI0NDgtYTJkZDQ5YjM5NWY5IWI2MzQ3NDB8YW5zLXhzdWFhIWI2NzMiLCJ1YWEiLCJhbnMteHN1YWEhYjY3My5hbnMiXSwiZXh0X2F0dHIiOnsiZW5oYW5jZXIiOiJYU1VBQSIsInN1YmFjY291bnRpZCI6ImRhZjE2ZDlhLWU1ZjYtNGY4OS04YjQ2LTZkMjViM2VmYjRmZSIsInpkbiI6ImYyM2NiYjlidHJpYWwiLCJzZXJ2aWNlaW5zdGFuY2VpZCI6IjFhNTZjOGExLWQ3YjYtNDI2Yy1iNDQ4LWEyZGQ0OWIzOTVmOSJ9LCJ6aWQiOiJkYWYxNmQ5YS1lNWY2LTRmODktOGI0Ni02ZDI1YjNlZmI0ZmUiLCJncmFudF90eXBlIjoiY2xpZW50X2NyZWRlbnRpYWxzIiwiYXpwIjoic2ItMWE1NmM4YTEtZDdiNi00MjZjLWI0NDgtYTJkZDQ5YjM5NWY5IWI2MzQ3NDB8YW5zLXhzdWFhIWI2NzMiLCJzY29wZSI6WyJ1YWEucmVzb3VyY2UiLCJhbnMteHN1YWEhYjY3My5hbnMuY3BfYWxlcnRfd3JpdGUiLCJhbnMteHN1YWEhYjY3My5hbnMuY3BfY29uZl9yZWFkIiwiYW5zLXhzdWFhIWI2NzMuYW5zLmNwX2FsZXJ0X3JlYWQiLCJhbnMteHN1YWEhYjY3My5hbnMuY3BfY29uZl93cml0ZSJdLCJleHAiOjE3ODAzNTE3NDAsImlhdCI6MTc4MDMwODU0MCwianRpIjoiNWNkZmUzMTM3NzNlNDJkODhiOTRmZTA5MDg0YTc0N2QiLCJyZXZfc2lnIjoiZGRiNGY4MmYiLCJjaWQiOiJzYi0xYTU2YzhhMS1kN2I2LTQyNmMtYjQ0OC1hMmRkNDliMzk1ZjkhYjYzNDc0MHxhbnMteHN1YWEhYjY3MyJ9.TbfFl3Eug4cd40aqYLWxlfvDVTJ40yeZA3cdkBm5yt9tXVsMSaSHgSU_Eb3NeIiKRufVo4vjHWFCZAx3bV8zxUyiB8fX3t0_1nOPYLvV4p1VaeqQDxfC9wWtljgxin2T4vKnchmWoiJv9gdkOaF2jIIdj2qidmE4pSm_36LZXB1e10nl6r8zQ6XQ4fyiNn4cluVtIGBNUlVVHEpxn8viguEioz3Jiwe3BuCXI9G6AYrIBo7czj9NzOwESmYguYwPVPLF3Im6yr6L1ouP-p7VIV1lFY3CCNO8iXvsxzLQjkN0hlne27ltjz_HH-iZxDd-_Q7f793TOyKyGZ3jAQ7u1g',
+      expiresIn: '43199',
+      error: null,
+      http_header: [Object]
+    }
+  ],
+  certificates: [],
+  name: 'alertservice',
+  type: 'HTTP',
+  url: 'https://clm-sl-ans-live-ans-service-api.cfapps.us10.hana.ondemand.com',
+  proxyType: 'Internet',
+  authentication: 'OAuth2ClientCredentials',
+  clientId: 'sb-1a56c8a1-d7b6-426c-b448-a2dd49b395f9!b634740|ans-xsuaa!b673',
+  clientSecret: 'cf28c71b-bcbe-4fe0-a9c3-42b45f64ef75$KqhobUY1hqTpJENdJLPTwjKwPNJTrYa8naxBE2DwZX0=',
+  tokenServiceUrl: 'https://f23cbb9btrial.authentication.us10.hana.ondemand.com/oauth/token',
+  isTrustingAllCertificates: false,
+  forwardAuthToken: false,
+  proxyConfiguration: { host: '127.0.0.1', protocol: 'http', port: 8887 }
+}

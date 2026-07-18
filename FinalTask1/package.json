@@ -1,0 +1,68 @@
+{
+  "name": "FinalTask",
+  "version": "1.0.0",
+  "dependencies": {
+    "@cap-js/hana": "^2.8.0",
+    "@sap-cloud-sdk/connectivity": "^4.7.0",
+    "@sap-cloud-sdk/http-client": "^4.7.0",
+    "@sap-cloud-sdk/resilience": "^4.7.0",
+    "@sap/cds": "^9.9.1",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/xssec": "^4.13.0",
+    "better-sqlite3": "^12.10.0",
+    "dotenv": "^17.4.2"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2.4.0",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "watch-stockoverview": "cds watch --open stockoverview/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-stockmovement": "cds watch --open stockmovement/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "muruganapprouter": "cds bind --exec -- npm start --prefix app/router"
+  },
+  "private": true,
+  "cds": {
+    "requires": {
+      "destinations": true,
+      "html5-repo": true,
+      "workzone": true,
+      "[hybrid]": {
+        "auth": {
+          "kind": "xsuaa"
+        },
+        "server": {
+          "cors": true
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa"
+      },
+      "[local]": {
+        "auth": {
+          "kind": "dummy"
+        },
+        "server": {
+          "cors": true
+        },
+        "db": {
+          "kind": "sqlite",
+          "credentials": {
+            "database": "db.sqlite"
+          }
+        }
+      }
+    }
+  },
+  "workspaces": [
+    "app/*"
+  ],
+  "sapux": [
+    "app/stockoverview",
+    "app/stockmovement"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -2,8 +2,10 @@
   "name": "security",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/hana": "^2.7.0",
     "@sap/cds": "^9",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "v": "^0.3.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",

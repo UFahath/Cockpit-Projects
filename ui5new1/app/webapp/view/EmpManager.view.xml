@@ -1,0 +1,65 @@
+<mvc:View xmlns:mvc='sap.ui.core.mvc' xmlns='sap.m' xmlns:core='sap.ui.core' controllerName='ui5new1.controller.EmpManager'>
+
+<!--App-->
+<App>
+   <pages >
+   <!-- <Title text='This is dummy'/> -->
+   <!--First Page-->
+   <Page title='Dummy App'>
+   <content>
+   <Panel>
+   <content>
+   <VBox>
+<HBox>a
+<Title text='{i18n>empDetailHeading}' class="sapUiSmallMarginCenter"/>
+<Select class='sapUiSmallMarginBegin'  id='langDropdown' change='.onLanguageChange'>
+    <items>
+          <core:Item key="en" text="{i18n>English}"/> 
+          <core:Item key="ta" text="{i18n>Tamil}"/>
+          <core:Item key="fr" text="french"/>
+    </items>
+</Select>
+<!-- <Button text="submit" /> -->
+
+</HBox>
+
+<!--1-->
+<HBox>
+<Label text='{i18n>name}' class='sapUiSmallMarginTop'/>
+<Text text="{textFields>/name}" class='sapUiSmallMarginBegin sapUiSmallMarginTop'/>
+</HBox>
+
+
+<!--2-->
+<HBox>
+<Label text='{i18n>city}' class='sapUiSmallMarginTop'/>
+<Text text='Chennai' class='sapUiSmallMarginBegin sapUiSmallMarginTop'/>
+</HBox>
+
+
+<!-- 3 -->
+<HBox>
+<Label text='{i18n>status}' class='sapUiSmallMarginTop'/>
+<Text text='IsActive' class='sapUiSmallMarginBegin sapUiSmallMarginTop'/>
+</HBox>
+
+
+<!-- 4 -->
+<Input id='nameInput1' placeholder='{i18n>enterName}' class='sapUiSmallMarginTop sapUiSmallMarginEnd' width='500px'/>
+
+<!-- 5 -->
+<HBox>
+<Button text='{i18n>updateName}' press='onUpdate'/>
+<Button text='{i18n>toggleStatus}' class='sapUiSmallMarginBegin' press='onToggle' />
+<Button text='{i18n>switchLang}' class='sapUiSmallMarginBegin' press='onSwitchLang'/>
+</HBox>
+
+ 
+</VBox>
+</conent>
+</Panel>
+   </content>
+   </Page>
+  </pages>
+</App>
+</mvc:View>
