@@ -12,12 +12,24 @@ sap.ui.define([
          },
          init(){
             UIComponent.prototype.init.call(this);
+           this.getRouter().initialize();
+
+           this.getRouter().attachRouteMatched(function(oEvent){
+            console.log("Route Method::",oEvent.getParameter("name"))
+           })
+
+           //Button Flag
+           let buttonFlag = new JSONModel({
+            isButtonPressed:false
+           })
+
+            this.setModel(buttonFlag,'viewFlip');
             //Load Json Model
-            let data ={
-                name:'No Name'
-            }
-            let jModel = new JSONModel(data);
-            this.setModel(jModel,'textFields');
+            // let data ={
+            //     name:'No Name'
+            // }
+            // let jModel = new JSONModel(data);
+            // this.setModel(jModel,'textFields');
 
             //Resource Model
             // let rModel = new ResourceModel({

@@ -1,0 +1,84 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "name": "John Miller",
+      "department": "IT",
+      "email": "john.miller@example.com",
+      "phone": "+1-555-1001",
+      "avatar": "https://i.pravatar.cc/150?img=1"
+    },
+    {
+      "id": 2,
+      "name": "Sara Johnson",
+      "department": "HR",
+      "email": "sara.johnson@example.com",
+      "phone": "+1-555-1002",
+      "avatar": "https://i.pravatar.cc/150?img=2"
+    },
+    {
+      "id": 3,
+      "name": "David Lee",
+      "department": "Finance",
+      "email": "david.lee@example.com",
+      "phone": "+1-555-1003",
+      "avatar": "https://i.pravatar.cc/150?img=3"
+    },
+    {
+      "id": 4,
+      "name": "Emily Davis",
+      "department": "Marketing",
+      "email": "emily.davis@example.com",
+      "phone": "+1-555-1004",
+      "avatar": "https://i.pravatar.cc/150?img=4"
+    },
+    {
+      "id": 5,
+      "name": "Michael Brown",
+      "department": "Sales",
+      "email": "michael.brown@example.com",
+      "phone": "+1-555-1005",
+      "avatar": "https://i.pravatar.cc/150?img=5"
+    },
+    {
+      "id": 6,
+      "name": "Sophia Wilson",
+      "department": "IT",
+      "email": "sophia.wilson@example.com",
+      "phone": "+1-555-1006",
+      "avatar": "https://i.pravatar.cc/150?img=6"
+    },
+    {
+      "id": 7,
+      "name": "Daniel Martinez",
+      "department": "Operations",
+      "email": "daniel.martinez@example.com",
+      "phone": "+1-555-1007",
+      "avatar": "https://i.pravatar.cc/150?img=7"
+    },
+    {
+      "id": 8,
+      "name": "Olivia Anderson",
+      "department": "HR",
+      "email": "olivia.anderson@example.com",
+      "phone": "+1-555-1008",
+      "avatar": "https://i.pravatar.cc/150?img=8"
+    },
+    {
+      "id": 9,
+      "name": "James Thomas",
+      "department": "Finance",
+      "email": "james.thomas@example.com",
+      "phone": "+1-555-1009",
+      "avatar": "https://i.pravatar.cc/150?img=9"
+    },
+    {
+      "id": 10,
+      "name": "Isabella Taylor",
+      "department": "Marketing",
+      "email": "isabella.taylor@example.com",
+      "phone": "+1-555-1010",
+      "avatar": "https://i.pravatar.cc/150?img=10"
+    }
+  ]
+}

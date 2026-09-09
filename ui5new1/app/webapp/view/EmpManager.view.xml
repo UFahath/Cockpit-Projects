@@ -1,18 +1,17 @@
-<mvc:View xmlns:mvc='sap.ui.core.mvc' xmlns='sap.m' xmlns:core='sap.ui.core' controllerName='ui5new1.controller.EmpManager'>
+<mvc:View xmlns:mvc='sap.ui.core.mvc' xmlns='sap.m' xmlns:core='sap.ui.core' controllerName='ui5new1.controller.EmpManager' displayBlock="true">
+<!-- <Shell> -->
+<!-- <App >
+<pages> -->
+<Page title="Employee Management Application" > 
 
-<!--App-->
-<App>
-   <pages >
-   <!-- <Title text='This is dummy'/> -->
-   <!--First Page-->
-   <Page title='Dummy App'>
-   <content>
-   <Panel>
-   <content>
+<content>
+  <Button text="Go to Detail" press=".onNavToDetail"/>
+<Panel class='sapUiResponsiveMargin sapUiYellow' width='auto' >
+<content>
    <VBox>
-<HBox>a
+<HBox>
 <Title text='{i18n>empDetailHeading}' class="sapUiSmallMarginCenter"/>
-<Select class='sapUiSmallMarginBegin'  id='langDropdown' change='.onLanguageChange'>
+<Select class='sapUiSmallMarginBegin'  id='langDropdown' change='onLanguageChange'>
     <items>
           <core:Item key="en" text="{i18n>English}"/> 
           <core:Item key="ta" text="{i18n>Tamil}"/>
@@ -56,10 +55,11 @@
 
  
 </VBox>
-</conent>
+</content>
 </Panel>
-   </content>
-   </Page>
-  </pages>
-</App>
+</content>
+</Page> 
+ <!-- </pages>
+</App>  -->
+<!-- </Shell>-->
 </mvc:View>

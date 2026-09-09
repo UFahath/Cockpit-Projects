@@ -23,7 +23,7 @@ sap.ui.define([
         // },
         onUpdate: function () {
             let oBundle = this.getView().getModel('i18n').getResourceBundle();
-           
+
             let inputValue = this.byId('nameInput1').getValue();
             if (!inputValue) {
                 MessageToast.show(oBundle.getText('errorEmpty'));
@@ -37,7 +37,7 @@ sap.ui.define([
             let jModel = this.getView().getModel('textFields');
             let languageDetection = sap.ui.getCore().getConfiguration().getLanguage();
             console.log(languageDetection)
-            jModel.setProperty('/name',inputValue)
+            jModel.setProperty('/name', inputValue)
         },
         onToggle: function () {
             alert('On Toggle Triggered')
@@ -45,15 +45,19 @@ sap.ui.define([
         onSwitchLang: function () {
             alert('on Switch language Triggered')
         },
-        onLanguageChange:function(event){
+        onLanguageChange: function (event) {
             let lang = event.getSource().getSelectedKey();
             console.log(lang)
-           sap.ui.getCore().getConfiguration().setLanguage(lang);  
+            sap.ui.getCore().getConfiguration().setLanguage(lang);
 
-         const res=this.getView().getModel("i18n").getResourceBundle().getText("successMsg")
-        //   console.log(res.getText('empDetailHeading'))
-         MessageToast.show(res);
-        //  location.reload();
+            const res = this.getView().getModel("i18n").getResourceBundle().getText("successMsg")
+            //   console.log(res.getText('empDetailHeading'))
+            MessageToast.show(res);
+            //  location.reload();
+        },
+        onNavToDetail: function () {
+             alert("I am triggered")
+            this.getOwnerComponent().getRouter().navTo("Dummy");
         }
     });
 
@@ -64,18 +68,18 @@ sap.ui.define([
 
 //-------------onLanguageChange-----------------
 //    let fixedLanguage = sap.ui.getCore().getConfiguration().getLanguage();
-        //    console.log(fixedLanguage)
-        //     console.log(lang)
-        //  function setResourceLanguage(lang){
-        //     const oModel1 = new ResourceModel({
-        //             bundleName:'ui5new1.i18n.i18n',
-        //             bundleLocale:lang.toLowerCase()
-        //         })
-        //  console.log(oModel1)
+//    console.log(fixedLanguage)
+//     console.log(lang)
+//  function setResourceLanguage(lang){
+//     const oModel1 = new ResourceModel({
+//             bundleName:'ui5new1.i18n.i18n',
+//             bundleLocale:lang.toLowerCase()
+//         })
+//  console.log(oModel1)
 
-        // //  let model = setResourceLanguage(lang);
-        //  this.getView().setModel(oModel1,'i18n')
-    //-------------------------------------------
+// //  let model = setResourceLanguage(lang);
+//  this.getView().setModel(oModel1,'i18n')
+//-------------------------------------------
 
 
 

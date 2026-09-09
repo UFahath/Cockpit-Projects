@@ -1,0 +1,19 @@
+body{
+    background-color:blueviolet;
+}
+
+
+.searchBar{
+    width:50%;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.fadeEffect{
+    opacity:0;
+    transition:opacity 0.8s ease-in-out;
+}
+
+.fadeEffect.show{
+    opacity:1;
+}
